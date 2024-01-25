@@ -22,29 +22,15 @@ public class Lottery {
 
 
     private void initFrequencyMap() {
-//        PriorityQueue<Toy> tempQueue = new PriorityQueue<>(this.toys);
+
         this.toysFrequency = new HashMap<>();
         for (Toy toy : this.toys) {
             this.toysFrequency.putIfAbsent(toy.getName(), 0);
         }
-//        while (!tempQueue.isEmpty()) {
-////            toysFrequency.put(tempQueue.poll().getName(),0);
-//            this.toysFrequency.putIfAbsent(tempQueue.poll().getName(), 1);
-//        }
-//        System.out.println(this.toysFrequency);
         computeFrequency();
     }
 
     private void computeFrequency() {
-//        PriorityQueue<Toy> tempQueue = new PriorityQueue<>(this.toys);
-//        while (!tempQueue.isEmpty()) {
-////            toysFrequency.put(tempQueue.poll().getName(),0);
-//            Toy temp = tempQueue.poll();
-//            if (tempQueue.contains(temp)){
-//                int value = this.toysFrequency.get(temp.getName()) + 1;
-//                this.toysFrequency.put(temp.getName(), value);
-//            }
-//        }
         for (Toy toy : this.toys) {
             this.toysFrequency.put(toy.getName(), this.toysFrequency.get(toy.getName()) + 1);
         }
@@ -53,31 +39,9 @@ public class Lottery {
 
     private void updateRateForOneToy() {
         this.toys.forEach(x -> x.setRate((float) 1 / this.toys.size()));
-//        for (Toy toy:this.toys){
-////            toy.setRate((float)this.toysFrequency.get(toy.getName())/toys.size());
-//            toy.setRate((float) 1 / this.toys.size());
-//            toysWithTrueRate.offer(toy);
-//        }
     }
 
-//    public Toy getToy(){
-//        Set<Toy> tempToys = new HashSet<Toy>();
-//        PriorityQueue<Toy> tempQueue = new PriorityQueue<>(this.toysWithTrueRate);
-//        Toy returnToy;
-//        double rollRate = roll();
-//        while (!tempQueue.isEmpty()){
-//            Toy tempToy = tempQueue.poll();
-//            if (tempToy.getRate() <= rollRate){
-//                tempToys.add(tempToy);
-//            }
-//        }
-//        if (tempToys.size() > 1){
-//            returnToy = (Toy) tempToys.toArray()[new Random().nextInt(0,tempToys.size())];
-//        }else returnToy =  (Toy)tempToys.toArray()[0];
-//        //TODO нужно проверить исключение outOfBounds
-//        removeToyFromDatabase(returnToy);
-//        return returnToy;
-//    }
+
 
     public Toy getToy() {
         updateRateForOneToy();
